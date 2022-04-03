@@ -1,0 +1,89 @@
+p {
+  color: black;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.grid-outer {
+  background-image: linear-gradient(
+    to right bottom,
+    #252525, #443449, #753d60, #ac4263,
+    #dc4e53, #e45146, #eb5736, #ee5f22,
+    #e04b27, #d1372a, #c0212c, #af002d
+    );
+    background-size: 500%;
+    animation: bg-animation 10s infinite alternate;
+}
+
+@keyframes bg-animation {
+  0% {background-position: left}
+  100% {background-position: right}
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.card h1 {
+  color: black;
+  text-align: center;
+}
+
+.card ion-input {
+  width: 100%;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  margin: 10px 0;
+}
+
+.card ion-label {
+  display: block;
+  margin: 0;
+  padding: 0;
+  color: black;
+  font-weight: bold;
+}
+
+.card p {
+  color: black;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+.billing-info {
+  font-size: 17px;
+  padding-bottom: 35px
+}
+
+.thank-you-message-left {
+  text-align: left;
+  margin-right: 10%;
+  font-weight: bold;
+}
+
+.thank-you-message-right {
+  text-align: right;
+  margin-left: 10%;
+  font-weight: bold;
+}
+
+.card .error {
+  color: red;
+  font-weight: normal;
+}

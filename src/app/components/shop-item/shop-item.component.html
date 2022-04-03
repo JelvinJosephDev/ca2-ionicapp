@@ -1,0 +1,168 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <table align="center">
+      <tr>
+        <td>
+          <ion-img
+            style="width: 70px; height: 62px; padding: 5px"
+            src="./assets/logo.png"
+          ></ion-img>
+        </td>
+        <td>
+          <ion-title style="margin-left: -8%"
+            ><strong>Shop Calculator App</strong></ion-title
+          >
+        </td>
+      </tr>
+    </table>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-grid class="grid-outer">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card class="card">
+            <ion-card-header>
+              <ion-card-title>
+                <ion-label>
+                  <h1>Items</h1>
+                </ion-label>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-label>Television</ion-label>
+              <ion-input
+                type="number"
+                placeholder="Enter amount"
+                [(ngModel)]="item[0]"
+              ></ion-input>
+              <p class="error" *ngIf="item[0] === null">Please enter a value</p>
+              <ion-label>Mobile Phone</ion-label>
+              <ion-input
+                type="number"
+                placeholder="Enter amount"
+                [(ngModel)]="item[1]"
+              ></ion-input>
+              <p class="error" *ngIf="item[1] === null">Please enter a value</p>
+              <ion-label>Air Conditioner</ion-label>
+              <ion-input
+                type="number"
+                placeholder="Enter amount"
+                [(ngModel)]="item[2]"
+              ></ion-input>
+              <p class="error" *ngIf="item[2] === null">Please enter a value</p>
+              <ion-label>Laptop</ion-label>
+              <ion-input
+                type="number"
+                placeholder="Enter amount"
+                [(ngModel)]="item[3]"
+              ></ion-input>
+              <p class="error" *ngIf="item[3] === null">Please enter a value</p>
+              <ion-label>Gaming Desktop</ion-label>
+              <ion-input
+                type="number"
+                placeholder="Enter amount"
+                [(ngModel)]="item[4]"
+              ></ion-input>
+              <p class="error" *ngIf="item[4] === null">Please enter a value</p>
+              <ion-label>DSLR Camera</ion-label>
+              <ion-input
+                type="number"
+                placeholder="Enter amount"
+                [(ngModel)]="item[5]"
+              ></ion-input>
+              <p class="error" *ngIf="item[5] === null">Please enter a value</p>
+              <p>Total Item: {{ item.length }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row style="text-align: center">
+        <ion-col>
+          <ion-button
+            color="primary"
+            [disabled]="item.length < 6"
+            (click)="onSubmit()"
+            >Submit</ion-button
+          >
+          <ion-button
+            color="warning"
+            [disabled]="!isSubmitted"
+            (click)="onPaidCash()"
+            >Pay Cash</ion-button
+          >
+          <ion-button
+            color="danger"
+            [disabled]="!isSubmitted"
+            (click)="onCancel()"
+            >Cancel</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid *ngIf="isPaidButtonClicked">
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card class="card">
+            <ion-card-content>
+              <ion-row>
+                <ion-col>
+                  <ion-label>Paid Cash</ion-label>
+                  <ion-input
+                    type="number"
+                    placeholder="Enter paid cash"
+                    [(ngModel)]="enteredPaidCash"
+                  ></ion-input>
+                  <ion-row style="text-align: center">
+                    <ion-col>
+                      <ion-button color="success" (click)="onCalculateBalance()"
+                        >Calculate Balance</ion-button
+                      >
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid *ngIf="isSubmitted">
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card class="card">
+            <ion-card-header>
+              <ion-card-title>
+                <ion-label>
+                  <h1><strong>Billing</strong></h1>
+                </ion-label>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p class="billing-info">
+                Total Price: {{ total }} <br />
+                Total Price (incl tax): {{ taxResult }} <br />
+                Paid Cash: {{ paidCash }} <br />
+                Return Change: {{ returnCash }}
+              </p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid *ngIf="isCalculateButtonClicked">
+      <ion-row style="text-align: center">
+        <ion-col size-md="3.5" offset-md="4.22">
+          <section>
+            <p class="thank-you-message-left">THANK YOU</p>
+            <p class="thank-you-message-right">VISIT AGAIN</p>
+          </section>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-grid>
+</ion-content>
